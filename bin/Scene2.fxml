@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
+
+<AnchorPane maxWidth="1212.0" minHeight="0.0" minWidth="0.0" prefHeight="637.0" prefWidth="1212.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller2">
+   <children>
+      <Pane layoutX="68.0" layoutY="75.0" prefHeight="213.0" prefWidth="227.0" style="-fx-background-color: rgb(236,236,236);">
+         <children>
+            <ImageView fitHeight="116.0" fitWidth="203.0" layoutX="17.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@dosa.jpeg" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="143.0" prefHeight="27.0" prefWidth="234.0" text="South Indian Dosa" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Rating fx:id="rating1" layoutX="24.0" layoutY="175.0" prefHeight="30.0" prefWidth="176.0" rating="3.0" scaleY="0.9" style="-fx-background-color: rgb(236,236,236);" />
+         </children>
+      </Pane>
+      <Pane layoutX="644.0" layoutY="75.0" prefHeight="213.0" prefWidth="227.0" style="-fx-background-color: rgb(236,236,236);">
+         <children>
+            <ImageView fitHeight="116.0" fitWidth="203.0" layoutX="24.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@5d662c8ea84656a7661be92a_1566977166741.jpg" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-3.0" layoutY="143.0" prefHeight="27.0" prefWidth="234.0" text="Gujarati Thali" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Rating fx:id="rating3" layoutX="24.0" layoutY="175.0" prefHeight="30.0" prefWidth="176.0" rating="3.0" scaleY="0.9" style="-fx-background-color: rgb(236,236,236);" />
+         </children>
+      </Pane>
+      <Pane layoutX="356.0" layoutY="75.0" prefHeight="213.0" prefWidth="227.0" style="-fx-background-color: rgb(236,236,236);">
+         <children>
+            <ImageView fitHeight="116.0" fitWidth="203.0" layoutX="37.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@bhajiya.jpeg" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutY="143.0" prefHeight="27.0" prefWidth="227.0" text="Bhajiya" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Rating fx:id="rating2" layoutX="24.0" layoutY="175.0" prefHeight="30.0" prefWidth="176.0" rating="3.0" scaleY="0.9" style="-fx-background-color: rgb(236,236,236);" />
+         </children>
+      </Pane>
+      <Pane layoutX="935.0" layoutY="75.0" prefHeight="213.0" prefWidth="227.0" style="-fx-background-color: rgb(236,236,236);">
+         <children>
+            <ImageView fitHeight="116.0" fitWidth="190.0" layoutX="17.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@vadapav.jpeg" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutY="142.0" prefHeight="27.0" prefWidth="227.0" text="Vada pav" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Rating fx:id="rating4" layoutX="24.0" layoutY="175.0" prefHeight="30.0" prefWidth="176.0" rating="3.0" scaleY="0.9" style="-fx-background-color: rgb(236,236,236);" />
+         </children>
+      </Pane>
+      <Pane layoutX="67.0" layoutY="350.0" prefHeight="213.0" prefWidth="227.0" style="-fx-background-color: rgb(236,236,236);">
+         <children>
+            <ImageView fitHeight="116.0" fitWidth="203.0" layoutX="29.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@manchiriam.jpeg" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="143.0" prefHeight="27.0" prefWidth="234.0" text="Manchurian" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Rating fx:id="rating5" layoutX="24.0" layoutY="175.0" prefHeight="30.0" prefWidth="176.0" rating="3.0" scaleY="0.9" style="-fx-background-color: rgb(236,236,236);" updateOnHover="true" />
+         </children>
+      </Pane>
+      <Pane layoutX="360.0" layoutY="350.0" prefHeight="213.0" prefWidth="227.0" style="-fx-background-color: rgb(236,236,236);">
+         <children>
+            <ImageView fitHeight="116.0" fitWidth="203.0" layoutX="28.0" layoutY="16.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@panir.jpeg" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="143.0" prefHeight="27.0" prefWidth="234.0" text="Panir" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Rating fx:id="rating6" layoutX="24.0" layoutY="175.0" prefHeight="30.0" prefWidth="176.0" rating="3.0" scaleY="0.9" style="-fx-background-color: rgb(236,236,236);" />
+         </children>
+      </Pane>
+      <Pane layoutX="641.0" layoutY="350.0" prefHeight="213.0" prefWidth="227.0" style="-fx-background-color: rgb(236,236,236);">
+         <children>
+            <ImageView fitHeight="116.0" fitWidth="203.0" layoutX="26.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@GettyImages-1277362334-e1631816200941.jpg" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="143.0" prefHeight="27.0" prefWidth="234.0" text="Butter Chicken" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Rating fx:id="rating7" layoutX="24.0" layoutY="175.0" prefHeight="30.0" prefWidth="176.0" rating="3.0" scaleY="0.9" style="-fx-background-color: rgb(236,236,236);" />
+         </children>
+      </Pane>
+      <Pane layoutX="935.0" layoutY="350.0" prefHeight="213.0" prefWidth="227.0" style="-fx-background-color: rgb(236,236,236);">
+         <children>
+            <ImageView fitHeight="116.0" fitWidth="203.0" layoutX="27.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@pavpaji.jpeg" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="143.0" prefHeight="27.0" prefWidth="234.0" text="PavBhaji" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Rating fx:id="rating8" layoutX="24.0" layoutY="175.0" prefHeight="30.0" prefWidth="176.0" rating="3.0" scaleY="0.9" style="-fx-background-color: rgb(236,236,236);" />
+         </children>
+      </Pane>
+      <Button fx:id="btn2" layoutX="575.0" layoutY="584.0" mnemonicParsing="false" onAction="#submit" text="Submit">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label fx:id="label1" alignment="CENTER" contentDisplay="CENTER" layoutX="105.0" layoutY="302.0" prefHeight="17.0" prefWidth="154.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="label3" alignment="CENTER" contentDisplay="CENTER" layoutX="682.0" layoutY="302.0" prefHeight="17.0" prefWidth="154.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="label2" alignment="CENTER" contentDisplay="CENTER" layoutX="396.0" layoutY="302.0" prefHeight="17.0" prefWidth="154.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="label4" alignment="CENTER" contentDisplay="CENTER" layoutX="971.0" layoutY="302.0" prefHeight="17.0" prefWidth="154.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="label6" alignment="CENTER" contentDisplay="CENTER" layoutX="396.0" layoutY="576.0" prefHeight="17.0" prefWidth="154.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="label7" alignment="CENTER" contentDisplay="CENTER" layoutX="681.0" layoutY="576.0" prefHeight="17.0" prefWidth="154.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="label8" alignment="CENTER" contentDisplay="CENTER" layoutX="971.0" layoutY="576.0" prefHeight="17.0" prefWidth="154.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="label5" alignment="CENTER" contentDisplay="CENTER" layoutX="104.0" layoutY="576.0" prefHeight="17.0" prefWidth="154.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

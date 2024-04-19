@@ -1,21 +1,14 @@
-
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.util.Scanner;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.io.IOException;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 
 import org.controlsfx.control.Rating;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
-import com.UDPClient;
-
 
 public class Controller2 {
     @FXML
@@ -37,63 +30,69 @@ public class Controller2 {
     @FXML
     private Rating rating8;
     @FXML
-    Label label1;
+    private Label label1;
     @FXML
-    Label label2;
+    private Label label2;
     @FXML
-    Label label3;
+    private Label label3;
     @FXML
-    Label label4;
+    private Label label4;
     @FXML
-    Label label5;
+    private Label label5;
     @FXML
-    Label label6;
+    private Label label6;
     @FXML
-    Label label7;
+    private Label label7;
     @FXML
-    Label label8;
+    private Label label8;
 
+    @FXML
     public void submit(ActionEvent event) {
-        try (FileWriter writer = new FileWriter("data.txt")) {
-            writer.write("dosha:" + rating1.getRating() + ",\n");
-            writer.write("bhajiya:" + rating2.getRating() + ",\n");
-            writer.write("gujarati thali:" + rating3.getRating() + ",\n");
-            writer.write("vada pav:" + rating4.getRating() + ",\n");
-            writer.write("manchurian:" + rating5.getRating() + ",\n");
-            writer.write("paneer:" + rating6.getRating() + ",\n");
-            writer.write("batter chicken:" + rating7.getRating() + ",\n");
-            writer.write("pav bhaji:" + rating8.getRating() + ",\n");
+        
+        // Get the ratings data from UI
+        String data = String.format("%f,%f,%f,%f,%f,%f,%f,%f",
+                rating1.getRating(), rating2.getRating(), rating3.getRating(),
+                rating4.getRating(), rating5.getRating(), rating6.getRating(),
+                rating7.getRating(), rating8.getRating());
 
-           
+        // Create and start a new thread to perform the network operation
+        Thread thread = new Thread(() -> {
+            try {
+                // Perform the network operation
+                UDPClient udpClient = new UDPClient();
+                String clientData = udpClient.udpClient(data);
 
-            // Stage stage = (Stage) btn2.getScene().getWindow();
-            // stage.close();
-
-        } catch (Exception e) {
-            e.getStackTrace();
-        }
-    }
-
-    public void readFileAndUpdateLabels() {
-        File reader = new File("./extractedData.txt");
-        try (Scanner sc = new Scanner(reader)) {
-            String data = "";
-            while (sc.hasNextLine()) {
-                data = data + sc.nextLine();
+                // Update UI on the JavaFX Application Thread
+                Platform.runLater(() -> {
+                    try {
+                        // Update labels with received data
+                        String[] extractedArr = clientData.split(",");
+                        if (extractedArr.length >= 8) {
+                            label1.setText(extractedArr[0]);
+                            label2.setText(extractedArr[1]);
+                            label3.setText(extractedArr[2]);
+                            label4.setText(extractedArr[3]);
+                            label5.setText(extractedArr[4]);
+                            label6.setText(extractedArr[5]);
+                            label7.setText(extractedArr[6]);
+                            label8.setText(extractedArr[7]);
+                        } else {
+                            System.err.println("Received data is incomplete.");
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
+            } catch (SocketException | UnknownHostException e) {
+                e.printStackTrace();
+                // Handle exceptions, e.g., display error message to the user
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Handle IO exceptions, e.g., display error message to the user
             }
+        });
 
-            String[] extractedStr = data.split(",");
-            label1.setText(extractedStr[0]);
-            label1.setText(extractedStr[1]);
-            label1.setText(extractedStr[2]);
-            label1.setText(extractedStr[3]);
-            label1.setText(extractedStr[4]);
-            label1.setText(extractedStr[5]);
-            label1.setText(extractedStr[6]);
-            label1.setText(extractedStr[7]);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        // Start the thread
+        thread.start();
     }
-
 }

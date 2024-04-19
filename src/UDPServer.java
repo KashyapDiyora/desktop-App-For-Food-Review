@@ -1,64 +1,69 @@
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.InetAddress;
 
 public class UDPServer {
-    public static void main(String[] args) throws Exception {
-        while (true) {
 
+    public void udpServer() {
+        try {
             System.out.println("Server is Running");
-            DatagramSocket ds = new DatagramSocket(8000);
-            System.out.println("Server Waiting For Incoming Packet");
-            byte[] data = new byte[1024];
-            DatagramPacket dp = new DatagramPacket(data, data.length);
-            ds.receive(dp);
-            String str = new String(dp.getData());
-            // System.out.println(str);
+            try (DatagramSocket ds = new DatagramSocket(8000)) 
+            {
+                System.out.println("Server Waiting For Incoming Packet");
 
-            // Extract Data From Client and Convert into Understandeble
-            int i = 0;
-            String[] arrOfArray = str.split(",");
-            String[][] extractedData = new String[8][3];
-            for (String key : arrOfArray) {
-                String[] temp = key.split(":");
-                if (i < 8) {
-                    int j = 0;
-                    extractedData[i][j] = temp[j];
-                    j++;
-                    extractedData[i][j] = temp[j];
-                    i++;
+                while (true) 
+                {
+
+                    // Receive Packet From Client Which is Loaded with food review data
+                    byte[] data = new byte[1024];
+                    DatagramPacket dp = new DatagramPacket(data, data.length);
+                    ds.receive(dp);
+                    String recStr = new String(dp.getData());
+
+                    // Extract Data and according data send acknowledgment to Client
+                    String[] extractedData = recStr.split(",");
+                    String reviewStr = "";
+
+                    for (int i = 0; i < extractedData.length; i++) 
+                    {
+                        try 
+                        {
+                            int tempData = (int) Double.parseDouble(extractedData[i].trim());
+                            if (tempData == 1) {
+                                reviewStr += "terrible,";
+                            } else if (tempData == 2) {
+                                reviewStr += "disgusting,";
+                            } else if (tempData == 3) {
+                                reviewStr += "Good,";
+                            } else if (tempData == 4) {
+                                reviewStr += "awesome,";
+                            } else {
+                                reviewStr += "delicious,";
+                            }
+                        } 
+                        catch (NumberFormatException e) 
+                        {
+                        }
+                    }
+
+                    // After Extracting Data make packet and send to Client
+
+                    byte[] sendDataBytes = reviewStr.getBytes();
+                    DatagramPacket dp1 = new DatagramPacket(sendDataBytes, sendDataBytes.length, dp.getAddress(),
+                            dp.getPort());
+                    ds.send(dp1);
+                    System.out.println(reviewStr);
                 }
             }
-
-            for (i = 0; i < 8; i++) {
-                int j = 1;
-                Double a = Double.parseDouble(extractedData[i][j]);
-                System.out.println(extractedData[i][j]);
-                if (a == 1.0) {
-                    extractedData[i][2] = "terrible";
-                } else if (a == 2.0) {
-                    extractedData[i][2] = "disgusting";
-                } else if (a == 3.0) {
-                    extractedData[i][2] = "Good";
-                } else if (a == 4.0) {
-                    extractedData[i][2] = "awesome";
-                } else {
-                    extractedData[i][2] = "delicious";
-                }
-            }
-
-            // Preparing String Data to Send Client
-            String sendStr = "";
-            for (i = 0; i < 8; i++) {
-                sendStr = sendStr + extractedData[i][2] + ",";
-            }
-
-            // Sending Packet TO Client Foe acknowledgement
-            byte[] sendData = sendStr.getBytes();
-            InetAddress ip = dp.getAddress();
-            int port = dp.getPort();
-            DatagramPacket dp1 = new DatagramPacket(sendData, sendData.length, ip, port);
-            ds.send(dp1);
+        } 
+        catch (Exception e) 
+        {
+            e.printStackTrace();
         }
+
+    }
+
+    public static void main(String[] args) {
+        UDPServer server = new UDPServer();
+        server.udpServer();
     }
 }

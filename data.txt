@@ -1,8 +1,0 @@
-dosha:5.0,
-bhajiya:5.0,
-gujarati thali:5.0,
-vada pav:5.0,
-manchurian:5.0,
-paneer:2.0,
-batter chicken:1.0,
-pav bhaji:3.0,
